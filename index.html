@@ -53,15 +53,15 @@
 
 
     <div class="row">
-
+<!--
       <select ng-model="selectedRoom" ng-options="room as items.room for item in items">
         <option value="">Choose One</option>
-    </select>
+    </select> -->
 
 
-          <table class="table-striped" ng-if="selectedRoom">
+          <table class="table-striped">
             <!-- <thead></thead> -->
-            <tbody ng-repeat="n in selectedRoom">
+            <tbody ng-repeat="n in items">
               <tr>
                 <th>Name:</td>
                   <td>{{n.name}}</td>
