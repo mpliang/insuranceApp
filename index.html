@@ -58,10 +58,9 @@
         <option value="">Choose One</option>
     </select> -->
 
-
           <table class="table-striped">
             <!-- <thead></thead> -->
-            <tbody ng-repeat="n in items">
+            <tbody ng-repeat="n in items track by $index">
               <tr>
                 <th>Name:</td>
                   <td>{{n.name}}</td>
