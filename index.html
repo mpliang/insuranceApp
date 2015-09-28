@@ -1,0 +1,93 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html ng-app="insuranceApp">
+
+  <head>
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+  </head>
+
+  <body ng-controller="mainController" ng-cloak>
+    <header>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand">Insurance App</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+
+      <div class="row">
+        <input type="text" ng-model="newRoom">
+        <input type="button" value="Add Room" ng-click="addRoom()">
+      </div>
+      <div class="row">
+        <label for="item">Item:</label>
+        <input type="text" name="item" ng-model="item.name">
+        <label for="qty">QTY:</label>
+        <input type="text" name="qty" ng-model="item.qty">
+        <label for="cost">Cost:</label>
+        <input type="text" name="cost" ng-model="item.cost">
+        <select ng-model="item.room">
+          <option ng-repeat="room in rooms">
+            {{room}}
+          </option>
+        </select>
+        <input type="button" value="Add Item" ng-click="addItem(item)">
+      </div>
+
+      <div class="row" ng-repeat="n in items">
+        <select ng-model="selectedRoom">
+          <option>
+            {{n.room}}
+          </option>
+        </select>
+        <label for="total">Total Cost (room):</label>
+        <p>${{n.total}}</p>
+      </div>
+
+
+    <div class="row">
+
+      <select ng-model="selectedRoom" ng-options="room as items.room for item in items">
+        <option value="">Choose One</option>
+    </select>
+
+
+          <table class="table-striped" ng-if="selectedRoom">
+            <!-- <thead></thead> -->
+            <tbody ng-repeat="n in selectedRoom">
+              <tr>
+                <th>Name:</td>
+                  <td>{{n.name}}</td>
+              </tr>
+              <tr>
+                <th>Count:</td>
+                  <td>{{n.qty}}</td>
+              </tr>
+              <tr>
+                <th>Cost/item:</td>
+                  <td>{{n.cost}}</td>
+              </tr>
+              <tr>
+                <th>Total Cost:</td>
+                  <td>{{n.total}}</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+    </div>
+    </div>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/src/index.js"></script>
+  </body>
+
+</html>
